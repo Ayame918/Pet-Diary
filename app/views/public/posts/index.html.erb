@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col">
+        <p>画像</p>
+        <% if post.image.attached? %>
+          <%= image_tag post.image, size: "200x200" %>
+        <% elsif post.video.attached? %>
+          <%= image_tag post.video, size: "200x200" %>
+        <% else %>
+          <%= image_tag 'no_image.png', size: "200x200" %>
+        <% end %>
+      </div>
+      <div class="col">
+        <p>内容</p>
+        <span>
+            <%=link_to post.post_content, post_path(post.id) %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</div>

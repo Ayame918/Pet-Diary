@@ -1,6 +1,10 @@
 
 
-<h2>画像</h2>
+<h1>投稿編集</h1>
+
+<%= form_with model: @post do |f| %>
+
+  <h2>画像</h2>
 <% if @post.image.attached? %>
   <%= image_tag post.image, size: "200x200" %>
 <% elsif @post.video.attached? %>
@@ -8,11 +12,10 @@
 <% else %>
   <%= image_tag 'no_image.png', size: "200x200" %>
 <% end %>
-
-<h2>本文</h2>
-<p><%= @post.post_content %></p>
-
-
-
-<%= link_to "編集", edit_post_path(@post.id) %>
-<%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "投稿を削除しますか？" %>
+  
+  <h4>本文</h4>
+  <%= f.text_area :post_content %>
+  
+  <%= f.submit '保存' %>
+  
+<% end %>

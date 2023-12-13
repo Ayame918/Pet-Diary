@@ -18,14 +18,16 @@
   </head>
 
   <body>
-    <header>
-      <%= render 'layouts/header' %>
-    </header>
-    <main>
-      <%= yield %>
-    </main>
-    <footer>
-      <%= render 'layouts/footer' %>
-    </footer>
+    <div class="footerFixed">
+      <header>
+        <%= render 'layouts/header' %>
+      </header>
+      <main>
+        <%= yield %>
+      </main>
+      <footer>
+        <%= render 'layouts/footer' %>
+      </footer>
+    </div>
   </body>
 </html>
