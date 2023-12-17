@@ -1,2 +1,28 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container">
+  <h1><%= @user.name %>'s Page</h1>
+  <div class="row mt-3">
+    <div class="col-md-3">
+      <%= image_tag @user.get_profile_image(300,300), class: "img-fluid" %>
+      <h5>
+        <%= @user.name %>
+      </h5>
+      <div>
+        <%= @user.introduction %>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <h2><%= @user.name %>'s Posts</h2>
+      <div class="row">
+        <% @user.posts.each do |post| %>
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <%= link_to post.post_content.truncate(20), post_path(post) %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

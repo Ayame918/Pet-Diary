@@ -1,17 +1,19 @@
 <div class="container">
   <div class="row">
     <% @posts.each do |post| %>
-      <div class="col">
+      <div class="col-md-3">
         <p>画像</p>
-        <% if post.image.attached? %>
-          <%= image_tag post.image, size: "200x200" %>
-        <% elsif post.video.attached? %>
-          <%= image_tag post.video, size: "200x200" %>
+        <% if post.medias.attached? %>
+          <% post.medias.each do |media| %>
+            <% if media.content_type.include?('image') %>
+              <%= image_tag media, class: "img-fluid" %>
+            <% else %>
+              <%= video_tag rails_blob_path(media), controls: true, class: "img-fluid" %>
+            <% end %>
+          <% end %>
         <% else %>
-          <%= image_tag 'no_image.png', size: "200x200" %>
+          <%= image_tag 'no_image.jpg', size: "200x200" %>
         <% end %>
-      </div>
-      <div class="col">
         <p>内容</p>
         <span>
             <%=link_to post.post_content, post_path(post.id) %>

@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>User Lists</h1>
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-md-4">
+        <div class="card">
+          <%= image_tag user.get_profile_image(300,300), class: "img-fluid" %>
+          <div class="card-body">
+            <h5><%= link_to user.name, user_path(user) %></h5>
+            <%= user.introduction %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

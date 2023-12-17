@@ -18,6 +18,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
+      @post.save_tags(params[:post][:tags])
       redirect_to @post, notice: '投稿を更新しました'
     else
       render :edit
@@ -31,16 +32,20 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
-    post.save
-    redirect_to posts_path
-
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    if @post.save
+      @post.save_tags(params[:post][:tags])
+      redirect_to post_path(@post)
+    else
+      render :new
+    end
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:post_content, :video)
+    params.require(:post).permit(:post_content, medias: [])
   end
 
 end

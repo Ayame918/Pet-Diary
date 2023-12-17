@@ -8,13 +8,19 @@
     <div class="row">
       <div class="col text-center">
         <p>画像</p>
-        <%= f.file_field :media, accept: ["image/*", "video/*"], multiple: true %>
+        <%= f.file_field :medias, accept: ["image/*", "video/*"], multiple: true %>
       </div>
     </div>
     <div class="row">
       <div class="col text-center">
         <p>本文</p>
         <%= f.text_area :post_content %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center">
+        <p>本文</p>
+        <%= f.text_field :tags, value: @post.tags.pluck(:name) %>
       </div>
     </div>
     <div class="row">

@@ -1,7 +1,9 @@
 class Public::TagsController < ApplicationController
   def index
+    @tags = Tag.all
   end
 
-  def create
+  def show
+    @tag = Tag.find(params[:id])
   end
 end
