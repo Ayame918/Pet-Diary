@@ -3,9 +3,9 @@
   <% if @post.medias.attached? %>
     <% @post.medias.each do |media| %>
       <% if media.content_type.include?('image') %>
-        <%= image_tag media, class: "img-fluid" %>
+        <%= image_tag media, class: "img-fluid", size: "200x200" %>
       <% else %>
-        <%= video_tag rails_blob_path(media), controls: true, class: "img-fluid" %>
+        <%= video_tag rails_blob_path(media), controls: true, class: "img-fluid", size: "200x200" %>
       <% end %>
     <% end %>
   <% else %>
@@ -23,7 +23,15 @@
       </li>
     <% end %>
   </ul>
+  <div>
+    <%= render "public/favorites/btn", post: @post %>
+    コメント数： <%= @post.post_comments.count %>
+  </div>
 
   <%= link_to "編集", edit_post_path(@post.id) %>
   <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "投稿を削除しますか？" %>
+  
+  <%= render "public/comments/index", post: @post %>
+  <%= render "public/comments/form", post: @post, post_comment: @post_comment %>
+  
 </div>

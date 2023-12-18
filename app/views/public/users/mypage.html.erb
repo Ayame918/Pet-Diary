@@ -2,19 +2,21 @@
   <h1>MyPage</h1>
   <div class="row mt-3">
     <div class="col-md-3">
-      <%= image_tag current_user.get_profile_image(300,300), class: "img-fluid" %>
+      <%= image_tag current_user.get_profile_image(200,200), class: "img-fluid" %>
       <h5>
         <%= current_user.name %>
       </h5>
       <div>
         <%= current_user.introduction %>
       </div>
-      <div>
-        <%= link_to "プロフィール編集", edit_user_path(current_user) %>
-      </div>
-      <div>
-        <%= link_to "退会", withdraw_users_path, method: :patch, data: {confirm: "本当に退会しますか？"} %>
-      </div>
+      <% if @user.email != "guest@example.com" %>
+        <div>
+          <%= link_to "プロフィール編集", edit_user_path(current_user) %>
+        </div>
+        <div>
+          <%= link_to "退会", withdraw_users_path, method: :patch, data: {confirm: "本当に退会しますか？"} %>
+        </div>
+      <% end %>
     </div>
     <div class="col-md-9">
       <h2>My Posts</h2>
@@ -22,6 +24,9 @@
         <% current_user.posts.each do |post| %>
           <div class="col-md-4 mb-3">
             <div class="card">
+              <div class="card-image">
+                <%# post.post_content.medias %>
+              </div>
               <div class="card-body">
                 <%= link_to post.post_content.truncate(20), post_path(post) %>
               </div>

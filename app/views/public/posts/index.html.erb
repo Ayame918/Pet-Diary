@@ -6,9 +6,9 @@
         <% if post.medias.attached? %>
           <% post.medias.each do |media| %>
             <% if media.content_type.include?('image') %>
-              <%= image_tag media, class: "img-fluid" %>
+              <%= image_tag media, class: "img-fluid", size: "200x200" %>
             <% else %>
-              <%= video_tag rails_blob_path(media), controls: true, class: "img-fluid" %>
+              <%= video_tag rails_blob_path(media), controls: true, class: "img-fluid", size: "200x200" %>
             <% end %>
           <% end %>
         <% else %>
@@ -18,6 +18,8 @@
         <span>
             <%=link_to post.post_content, post_path(post.id) %>
         </span>
+        <%= render "public/favorites/btn", post: post %>
+        コメント数： <%= post.post_comments.count %>
       </div>
     <% end %>
   </div>

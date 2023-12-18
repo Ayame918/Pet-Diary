@@ -20,6 +20,10 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   # ユーザーが投稿を取得
   has_many :posts, dependent: :destroy
+  # 投稿に対するいいねを取得
+  has_many :post_favorites, dependent: :destroy
+  #投稿に対するコメントを取得
+  has_many :post_comments, dependent: :destroy
 
   # 指定したユーザーをフォローする
   def follow(user)
@@ -53,4 +57,18 @@ class User < ApplicationRecord
   def inactive_message
     is_active? ? super : :locked
   end
+  
+  GUEST_USER_EMAIL = "guest@example.com"
+  
+  def self.guest #find_or_create_byは、データの検索・作成を自動的に判断して処理を行うRailsのメソッド
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64 #ランダムな文字列を生成するRubyのメソッドの一種
+      user.name = "ゲスト"
+    end
+  end
+  
+  def guest_user? #メールアドレスがゲストユーザーのものであるかを判定しtrueかfalseの値を返す
+    email == GUEST_USER_EMAIL
+  end
+  
 end

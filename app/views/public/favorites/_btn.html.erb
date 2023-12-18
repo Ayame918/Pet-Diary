@@ -1,0 +1,11 @@
+<% if post.favorited_by?(current_user) %> <%#current_user) によっていいねされているかどうかを確認%>
+  <%= link_to post_favorites_path(post), method: :delete do %><%#オブジェクトに対していいねを作成・削除するためのURLを生成%>
+    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+    <%= post.post_favorites.count %> 
+  <% end %>
+<% else %>
+  <%= link_to post_favorites_path(post), method: :post do %><%#method: :post→リンクをクリックした際にHTTPのPOSTメソッドが使用されるように指定、いいねを作成するアクションに対応%>
+    <i class="fas fa-heart" aria-hidden="true"></i>
+    <%= post.post_favorites.count %> 
+  <% end %>
+<% end %>

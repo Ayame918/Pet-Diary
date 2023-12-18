@@ -20,9 +20,13 @@ Rails.application.routes.draw do
     resources :followings, only: [:create, :destroy]
     resources :tags, only: [:index, :show]
     resources :bookmarks, only: [:index, :create, :destroy]
-    resources :comments, only: [:create, :destroy]
-    resources :favorites, only: [:create, :destroy]
-    resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+    #resources :comments, only: [:create, :destroy]
+    #resources :favorites, only: [:create, :destroy]
+    #resources :posts, only: [ :index, :show, :create, :edit, :update]
+    resources :posts, only: [:new, :index, :show, :edit, :create, :destroy, :update] do
+      resource :favorites, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
+    end
 
     devise_scope :user do
       resources :users, only: [:index, :show, :edit] do
@@ -32,13 +36,14 @@ Rails.application.routes.draw do
           patch :withdraw
         end
       end
-      # resource :session, only: [:new, :create, :destroy]
 
+      post "user/guest_sign_in", to: "sessions#guest_sign_in"
 
     end
 
     #resource :session, only: [:new, :create, :destroy]
-    resource :registrations, only: [:new, :create]
+
+
 
     resource :relationships, only: [:create, :destroy]
     get "user_followings" => "relationships#followings", as: "user_followings"
