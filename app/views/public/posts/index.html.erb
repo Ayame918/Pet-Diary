@@ -2,7 +2,6 @@
   <div class="row">
     <% @posts.each do |post| %>
       <div class="col-md-3">
-        <p>画像</p>
         <% if post.medias.attached? %>
           <% post.medias.each do |media| %>
             <% if media.content_type.include?('image') %>
@@ -18,8 +17,10 @@
         <span>
             <%=link_to post.post_content, post_path(post.id) %>
         </span>
-        <%= render "public/favorites/btn", post: post %>
-        コメント数： <%= post.post_comments.count %>
+        <div class="col">
+          <%= render "public/favorites/btn", post: post %>
+            コメント数： <%= post.post_comments.count %>
+        </div>
       </div>
     <% end %>
   </div>

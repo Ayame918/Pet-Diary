@@ -19,13 +19,14 @@ Rails.application.routes.draw do
 
     resources :followings, only: [:create, :destroy]
     resources :tags, only: [:index, :show]
-    resources :bookmarks, only: [:index, :create, :destroy]
+    #resources :bookmarks, only: [:index, :create, :destroy]
     #resources :comments, only: [:create, :destroy]
     #resources :favorites, only: [:create, :destroy]
     #resources :posts, only: [ :index, :show, :create, :edit, :update]
     resources :posts, only: [:new, :index, :show, :edit, :create, :destroy, :update] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
+      resource :bookmarks, only: [:create, :destroy]
     end
 
     devise_scope :user do
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
           patch 'update_my_page', to: 'users#update', as: 'update_user'
           patch :withdraw
         end
+        
       end
 
       post "user/guest_sign_in", to: "sessions#guest_sign_in"

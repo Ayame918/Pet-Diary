@@ -22,8 +22,11 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   # 投稿に対するいいねを取得
   has_many :post_favorites, dependent: :destroy
-  #投稿に対するコメントを取得
+  # 投稿に対するコメントを取得
   has_many :post_comments, dependent: :destroy
+  # 投稿に対するブックマーク
+  has_many :post_bookmarks, dependent: :destroy
+  
 
   # 指定したユーザーをフォローする
   def follow(user)

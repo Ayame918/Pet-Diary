@@ -26,6 +26,11 @@
   <div>
     <%= render "public/favorites/btn", post: @post %>
     コメント数： <%= @post.post_comments.count %>
+    <% if @post.bookmarked_by?(current_user) %>
+      <td><%= link_to "ブックマークを外す", post_bookmarks_path(@post), method: :delete %></td>
+    <% else %>
+      <td><%= link_to "ブックマーク", post_bookmarks_path(@post), method: :post %></td>
+    <% end %>
   </div>
 
   <%= link_to "編集", edit_post_path(@post.id) %>
@@ -33,5 +38,5 @@
   
   <%= render "public/comments/index", post: @post %>
   <%= render "public/comments/form", post: @post, post_comment: @post_comment %>
-  
+
 </div>

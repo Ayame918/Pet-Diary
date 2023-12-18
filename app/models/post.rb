@@ -7,18 +7,20 @@ class Post < ApplicationRecord
   # throughを利用して、post_tagsを通してtagsとの関連付け(中間テーブル)
   #   Post.tagsとすれば、Postに紐付けられたTagの取得が可能
   has_many :tags, through: :post_tags
-  
+  # いいね
   has_many :post_favorites, dependent: :destroy
-  
+  # コメント
   has_many :post_comments, dependent: :destroy
+  # ブックマーク
+  has_many :post_bookmarks, dependent: :destroy 
+ 
 
 
   has_many_attached :medias
   
-  #def favorited_by?(user)
-   # user_id = user.is_a?(Integer) ? user : user.id
-   # favorited_by_user_id?(user_id)
-  #end
+  def bookmarked_by?(user)
+    post_bookmarks.exists?(user_id: user)
+  end
 
   def favorited_by?(user)
     post_favorites.exists?(user_id: user.id)
