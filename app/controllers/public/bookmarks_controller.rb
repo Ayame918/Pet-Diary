@@ -1,10 +1,9 @@
 class Public::BookmarksController < ApplicationController
     before_action :authenticate_user!   # ログイン中のユーザーのみに許可（未ログインなら、ログイン画面へ移動）
-  
+
   def index
     # 特定の投稿に関連するブックマーク一覧を取得
-    @post = Post.find(params[:post_id])
-    @bookmarks = @post.bookmarks
+    @bookmarks = current_user.post_bookmarks
   end
 
   # お気に入り登録

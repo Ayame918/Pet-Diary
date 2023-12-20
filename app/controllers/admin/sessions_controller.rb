@@ -2,17 +2,17 @@
 
 class Admin::SessionsController < Devise::SessionsController
 
-  def create # ユーザー認証を行い、リソースを取得
-    self.resource = warden.authenticate!(auth_options) # ログイン成功時のフラッシュメッセージを設定
-    set_flash_message!(:notice, :signed_in)
-    sign_in(resource_name, resource)  # ユーザーをサインインさせる
+  # def create # ユーザー認証を行い、リソースを取得
+  #   self.resource = warden.authenticate!(auth_options) # ログイン成功時のフラッシュメッセージを設定
+  #   set_flash_message!(:notice, :signed_in)
+  #   sign_in(resource_name, resource)  # ユーザーをサインインさせる
 
-  end
+  # end
 
-  def destroy # ログアウトする
-    sign_out(resource_name)
-    set_flash_message! :notice, :signed_out if signed_in? # ログアウト成功時のフラッシュメッセージを設定
-  end
+  # def destroy # ログアウトする
+  #   sign_out(resource_name)
+  #   set_flash_message! :notice, :signed_out if signed_in? # ログアウト成功時のフラッシュメッセージを設定
+  # end
 
 
   # before_action :configure_sign_in_params, only: [:create]

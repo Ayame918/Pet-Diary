@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
   }
-  
+
   namespace :admin do
     root to: 'homes#top'
      get "admin/search" => "searches#search"
@@ -37,14 +37,14 @@ Rails.application.routes.draw do
           get 'my_page', action: 'mypage'
           patch 'update_my_page', to: 'users#update', as: 'update_user'
           patch :withdraw
+          get :bookmark_posts, to: 'bookmarks#index' # ブックマークした一覧
         end
         resource :relationships, only: [:create, :destroy]
         	get "followings" => "relationships#followings", as: "followings"
         	get "followers" => "relationships#followers", as: "followers"
-        	
+
         	member do
-            # ブックマークした一覧
-            get :bookmark_posts
+
           end
       end
 
