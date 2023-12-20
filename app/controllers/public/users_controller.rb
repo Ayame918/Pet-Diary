@@ -60,5 +60,9 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name,:profile_image, :introduction)
   end
+  
+  def liked_posts
+    @bookmark_posts = Post.bookmark_posts(current_user, params[:page], 12)
+  end
 
 end

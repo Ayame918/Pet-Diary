@@ -13,6 +13,8 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   # ブックマーク
   has_many :post_bookmarks, dependent: :destroy 
+  
+  has_many :bookmarked_users, through: :post_bookmarks, source: :user
  
 
 
@@ -20,6 +22,14 @@ class Post < ApplicationRecord
   
   def bookmarked_by?(user)
     post_bookmarks.exists?(user_id: user)
+  end
+  
+  def self.bookmark_posts(user, page, per_page) # モデル内での操作を開始
+    includes(:post_favorites) # post_favorites テーブルを結合
+    .where(post_favorites: { user_id: user.id }) # ユーザーがいいねしたレコードを絞り込み
+    .order(created_at: :desc) # 投稿を作成日時の降順でソート
+    .page(page) # ページネーションのため、指定ページに表示するデータを選択
+    .per(per_page) # ページごとのデータ数を指定
   end
 
   def favorited_by?(user)

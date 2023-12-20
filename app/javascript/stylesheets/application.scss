@@ -1,28 +1,22 @@
 @use '~bootstrap/scss/bootstrap';
 
 .header{
-  background-color:#e6c0c0;
+  background:#e6c0c0;
 }
 
 main{
   background-color:#f2f5ff;
-  margin: 60px auto;
-}
-
-.footerFixed{
-  min-height: 100vh; // ←コンテンツ量最小値（ブラウザの高さ）
-  position: relative;// ←相対位置 
-  padding-bottom: 60px; // ←フッターの高さを指定
-  box-sizing: border-box;
-  //↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 
+  height: 100vh;
 }
 
 .footer{
-    position: absolute;/* ←絶対位置 */
-    bottom: 0;
-    background: #1d1b3f;
-    color: #fff;
-    text-align: center;
+  background-color: #4d382e;
+  position: sticky;
+  top: 100vh;
+  width: 100%;
+  height: 50px;
+  position:absolute;
+  bottom:0;
 }
 
 .main_visual_image1{

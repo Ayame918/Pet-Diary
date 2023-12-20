@@ -18,12 +18,14 @@
   </head>
 
   <body>
-    <div class="footerFixed">
+    <div>
       <header class="header">
         <%= render 'layouts/header' %>
       </header>
-      <main>
-        <%= yield %>
+      <main class="mt-5">
+        <div class="pt-5">
+          <%= yield %>
+        </div>
       </main>
       <footer class="footer">
         <%= render 'layouts/footer' %>
