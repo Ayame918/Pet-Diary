@@ -1,2 +1,26 @@
-<h1>Admin::Posts#index</h1>
-<p>Find me in app/views/admin/posts/index.html.erb</p>
+<<div class="container">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-3">
+        <% if post.medias.attached? %>
+          <% post.medias.each do |media| %>
+            <% if media.content_type.include?('image') %>
+              <%= image_tag media, class: "img-fluid", size: "200x200" %>
+            <% else %>
+              <%= video_tag rails_blob_path(media), controls: true, class: "img-fluid", size: "300x300" %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= image_tag 'no_image.jpg', size: "200x200" %>
+        <% end %>
+        <p>内容</p>
+        <span>
+            <%=link_to post.post_content, admin_post_path(post.id) %>
+        </span>
+        <div class="col">
+            <i class="fa-regular fa-comment-dots" style="color: #765047;"></i> <%= post.post_comments.count %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

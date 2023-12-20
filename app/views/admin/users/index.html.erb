@@ -1,2 +1,44 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div style=" color: white; background: #cbe6be; padding: 10px; border: 2px dashed rgba(255 , 255 , 255 , 0.5);
+                    -moz-border-radius: 6px; -moz-box-shadow: 0 0 0 5px #cbe6be , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+                    -webkit-border-radius: 6px; -webkit-box-shadow: 0 0 0 5px #cbe6be , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+                    border-radius: 6px; box-shadow: 0 0 0 5px #cbe6be , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5); ">
+        <h2 class="text-center", style="color: #48120E">
+          <i class="fa-regular fa-address-book" style="color: #e6c0c0;"></i>
+            ユーザー一覧
+          <i class="fa-regular fa-address-book" style="color: #e6c0c0;"></i>
+        </h2>
+      </div>
+      <div class="pt-5">
+        <table class="table", style="color: #4d382e;">
+          <thead>
+            <tr>
+              <th>会員ID</th>
+              <th>ユーザー名</th>
+              <th>メールアドレス</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= link_to user.name, admin_user_path(user) %></td>
+              <td><%= user.email %></td>
+              <td>
+                <% if user.is_active == true %>
+                  <p class = "text-success">有効</p>
+                <% else%>
+                　<p class = "text-secondary">退会済</p>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+    <div class="all__paginate">
+      <%= paginate @users %>
+    </div>
+  </div>

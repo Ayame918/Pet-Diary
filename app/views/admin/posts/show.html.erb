@@ -1,2 +1,29 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<div class="container">
+  <% if @post.medias.attached? %>
+    <% @post.medias.each do |media| %>
+      <% if media.content_type.include?('image') %>
+        <%= image_tag media, class: "img-fluid", size: "200x200" %>
+      <% else %>
+        <%= video_tag rails_blob_path(media), controls: true, class: "img-fluid", size: "200x200" %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= image_tag 'no_image.jpg', size: "200x200" %>
+  <% end %>
+
+  <h2>本文</h2>
+  <p><%= @post.post_content %></p>
+
+  <h2>タグ</h2>
+  <ul>
+    <% @post.tags.each do |tag| %>
+      <li>
+        <%= link_to tag.name, tag_path(tag) %>
+      </li>
+    <% end %>
+  </ul>
+  <div>
+    <i class="fa-regular fa-comment-dots" style="color: #765047;"></i> <%= @post.post_comments.count %>
+  </div>
+  <%= link_to "編集", edit_admin_post_path(@post.id) %>
+  <%= link_to "削除", admin_post_path(@post.id), method: :delete, "data-confirm" => "投稿を削除しますか？" %> 

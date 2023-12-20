@@ -7,7 +7,7 @@
             <% if media.content_type.include?('image') %>
               <%= image_tag media, class: "img-fluid", size: "200x200" %>
             <% else %>
-              <%= video_tag rails_blob_path(media), controls: true, class: "img-fluid", size: "200x200" %>
+              <%= video_tag rails_blob_path(media), controls: true, class: "img-fluid", size: "300x300" %>
             <% end %>
           <% end %>
         <% else %>
@@ -19,7 +19,7 @@
         </span>
         <div class="col">
           <%= render "public/favorites/btn", post: post %>
-            コメント数： <%= post.post_comments.count %>
+            <i class="fa-regular fa-comment-dots" style="color: #765047;"></i> <%= post.post_comments.count %>
         </div>
       </div>
     <% end %>

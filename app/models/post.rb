@@ -1,6 +1,5 @@
 class Post < ApplicationRecord
   belongs_to :user
-
   # dependent: :destroyでPostが削除されると同時にPostとTagの関係が削除される
   has_many :post_tags, dependent: :destroy
 

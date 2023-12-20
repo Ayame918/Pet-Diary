@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yomogi&display=swap" rel="stylesheet">
     <%#JavaScriptライブラリであるjQueryのスリムバージョンのファイル jQueryは、ウェブページ上でのDOM操作やイベント処理などを簡略化するために使用%>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <%#Bootstrapなどでポップオーバーやドロップダウンメニューの動作に必要なポップパー（位置やサイズを計算するためのライブラリ）を提供するJavaScriptライブラリ%>
@@ -17,18 +20,20 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column h-100">
     <div>
-      <header class="header">
+      <header class="fixed-top" style="background-color: #6c2735">
         <%= render 'layouts/header' %>
       </header>
-      <main class="mt-5">
-        <div class="pt-5">
+      <main class="flex-shrink-0 pt-5">
+        <div class="container pt-5 pb-5">
           <%= yield %>
         </div>
       </main>
-      <footer class="footer">
-        <%= render 'layouts/footer' %>
+      <footer class="mt-auto py-3 bg-body-tertiary" style="background-color: #6c2735 ">
+        <div class="container">
+          <%= render 'layouts/footer' %>
+        </div>
       </footer>
     </div>
   </body>

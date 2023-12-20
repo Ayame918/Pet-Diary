@@ -1,0 +1,29 @@
+<div class ="container">
+  <h1>投稿編集</h1>
+  
+  <%= form_with model: @post do |f| %>
+  
+      <div class="row">
+        <div class="col text-center">
+          <%= f.file_field :medias, accept: ["image/*", "video/*"], multiple: true %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <p>本文</p>
+          <%= f.text_area :post_content %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <p>タグ</p>
+          <%= f.text_field :tags, value: @post.tags.pluck(:name) %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <%= f.submit '投稿' %>
+        </div>
+      </div>
+  <% end %>
+</div>

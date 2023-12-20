@@ -1,2 +1,57 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="clip-box-b">
+        <div class="col-9 mb-5 mt-3">
+          <div style=" color: white; background: #cbe6be; padding: 5px; border: 2px dashed rgba(255 , 255 , 255 , 0.5);
+                      -moz-border-radius: 6px; -moz-box-shadow: 0 0 0 5px #cbe6be , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+                      -webkit-border-radius: 6px; -webkit-box-shadow: 0 0 0 5px #cbe6be , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+                      border-radius: 6px; box-shadow: 0 0 0 5px #cbe6be , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5); ">
+            <h4 class="text-center", style="color: #48120E">
+              <i class="fa-solid fa-clover" style="color:  #54917f;"></i>
+                <%= @user.name %>さんのユーザー詳細
+              <i class="fa-solid fa-clover" style="color:  #54917f;"></i>
+            </h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 d-flex align-items-center pl-5">
+            <table class="table table-borderless" style="color: #48120E;">
+              <tr>
+                <th>ユーザーID</td>
+                <td><%= @user.id %></td>
+              </tr>
+              <tr>
+                <th>氏名</td>
+                <td><%= @user.name %></td>
+              </tr>
+              <tr>
+                <th>メールアドレス</th>
+                <td><%= @user.email %></td>
+              </tr>
+              <tr>
+                <th>会員ステータス</th>
+                <th><%= @user.is_active %></th>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="d-flex justify-content-end">
+                  <div style="border: 2px solid #ffe9a9; padding: 2px; border-radius: 5px; text-align: center;">
+                    <div style="background-color: #ffe9a9; border-radius: 5px;">
+                      <%= link_to "編集する", edit_admin_user_path, class:"btn" %>
+                    </div>
+                  </div>
+                  <div style="border: 2px solid #bee6df; padding: 2px; border-radius: 5px; text-align: center;">
+                    <div style="background-color: #bee6df; border-radius: 5px;">
+                      <%= link_to "投稿履歴一覧を見る", admin_post_path, class:"btn" %>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,23 +1,14 @@
 @use '~bootstrap/scss/bootstrap';
 
-.header{
-  background:#e6c0c0;
-}
+* { font-family: 'Yomogi', cursive; }
 
 main{
-  background-color:#f2f5ff;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  background-color: #fff9f5;
 }
 
-.footer{
-  background-color: #4d382e;
-  position: sticky;
-  top: 100vh;
-  width: 100%;
-  height: 50px;
-  position:absolute;
-  bottom:0;
-}
+
 
 .main_visual_image1{
   width: 555px;
@@ -26,14 +17,14 @@ main{
 
 .card1 {
   width: auto;
-  background: #fff9f5;
+  background: #fafdff;
   border-radius: 5px;
   box-shadow: 0 2px 5px #ccc;
 }
 
 .card2 {
   width: auto;
-  background: #fff9f5;
+  background: #fafdff;
   border-radius: 5px;
   box-shadow: 0 2px 5px #ccc;
 }

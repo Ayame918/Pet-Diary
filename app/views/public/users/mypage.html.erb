@@ -3,15 +3,18 @@
   <div class="row mt-3">
     <div class="col-md-3">
       <div>
-        <p>followings</p>
-        <%= link_to @user.followings.count, user_followings_path(@user) %>
+        <%= link_to user_followings_path(@user) do %>
+          <i class="fa-solid fa-address-book" style="color: #fdcedc;"></i>
+          <%= @user.followings.count %>
+        <% end %>
       </div>
       <div>
-        <p>followers</p>
-        <%= link_to @user.followers.count, user_followers_path(@user) %>
+        <%= link_to user_followers_path(@user) do %>
+        <i class="fa-solid fa-address-book" style="color: #cefafd;"></i>
+        <%= @user.followers.count %>
+        <% end %>
       </div>
       <div>
-        <p>お気に入り</p>
         <%= link_to bookmark_posts_users_path do %>
           <i class="fas fa-star" style="color: #ffedab;"></i>
         <% end %>

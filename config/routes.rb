@@ -14,7 +14,9 @@ Rails.application.routes.draw do
      get "admin/search" => "searches#search"
     resources :users, only: [:index, :show, :edit, :update]
     resources :tags, only: [:index, :edit, :update]
-    resources :posts, only: [:index, :show]
+    resources :posts, only: [:index, :show, :edit, :create, :destroy, :update] do
+      patch 'adomin', to: 'post#update', as: 'post_update'
+    end
   end
 
   resources :videos
@@ -43,9 +45,6 @@ Rails.application.routes.draw do
         	get "followings" => "relationships#followings", as: "followings"
         	get "followers" => "relationships#followers", as: "followers"
 
-        	member do
-
-          end
       end
 
       post "user/guest_sign_in", to: "sessions#guest_sign_in"
