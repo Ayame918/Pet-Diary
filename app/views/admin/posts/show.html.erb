@@ -25,5 +25,5 @@
   <div>
     <i class="fa-regular fa-comment-dots" style="color: #765047;"></i> <%= @post.post_comments.count %>
   </div>
-  <%= link_to "編集", edit_admin_post_path(@post.id) %>
+  
   <%= link_to "削除", admin_post_path(@post.id), method: :delete, "data-confirm" => "投稿を削除しますか？" %> 

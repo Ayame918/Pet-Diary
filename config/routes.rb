@@ -11,12 +11,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
-     get "admin/search" => "searches#search"
+     get "search" => "searches#search"
     resources :users, only: [:index, :show, :edit, :update]
-    resources :tags, only: [:index, :edit, :update]
-    resources :posts, only: [:index, :show, :edit, :create, :destroy, :update] do
-      patch 'adomin', to: 'post#update', as: 'post_update'
-    end
+    resources :tags, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show, :destroy]
   end
 
   resources :videos

@@ -39,7 +39,8 @@ class Post < ApplicationRecord
 
     # タグをスペース区切りで分割し配列にする
     #   連続した空白も対応するので、最後の“+”がポイント
-    tag_list = tags.split(/[[:blank:]]+/)
+    #tag_list = tags.split(/[[:blank:]]+/)
+    tag_list = tags.split(/\s+/)
 
     # 自分自身に関連づいたタグを取得する
     current_tags = self.tags.pluck(:name)

@@ -35,10 +35,10 @@
       <% end %>
     <% end %>
   </div>
-
-  <%= link_to "編集", edit_post_path(@post.id) %>
-  <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "投稿を削除しますか？" %>
-  
+  <% if current_user && current_user.id == @post.user_id %>
+    <%= link_to "編集", edit_post_path(@post.id) %>
+    <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "投稿を削除しますか？" %>
+  <% end %>
   <%= render "public/comments/index", post: @post %>
   <%= render "public/comments/form", post: @post, post_comment: @post_comment %>
 
