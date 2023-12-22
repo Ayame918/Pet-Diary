@@ -74,4 +74,13 @@ class User < ApplicationRecord
     email == GUEST_USER_EMAIL
   end
   
+  def self.looks(search, word)
+    if search == "perfect_match"
+      User.where("name LIKE?", "#{word}")
+    elsif search == "partial_match"
+      User.where("name LIKE?","%#{word}%")
+    else
+      User.all
+    end
+  end
 end

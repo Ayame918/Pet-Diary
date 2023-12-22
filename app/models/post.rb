@@ -71,6 +71,14 @@ class Post < ApplicationRecord
       #   配列追加のようにレコードを渡すことで新規レコード作成が可能
       self.tags << new_post_tag
     end
+  end
 
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @post = Post.where("title LIKE?","#{word}")
+    else search == "partial_match"
+      @post = Post.where("title LIKE?","%#{word}%")
+    end
   end
 end
