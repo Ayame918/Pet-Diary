@@ -1,7 +1,7 @@
 <table class="table table-hover table-inverse">
   <!--検索対象モデルがUserの時 -->
   <% if @range == "User" %>
-  <h2>Users search for "<%= @word %>"</h2>
+  <h2>ユーザーを "<%= @word %>" で検索した結果</h2>
     <thead>
       <tr>
         <th></th>
@@ -12,10 +12,12 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <%= link_to user_path(user.id) do %>
-            <td><%= image_tag user.get_profile_image(200,200) %></td>
+            <td>
+              <%= link_to user_path(user.id) do %>
+                <%= image_tag user.get_profile_image(200,200) %>
+              <% end %>
+            </td>
             <td><%= user.name %></td>
-          <% end %>
         </tr>
       <% end %>
     </tbody>
@@ -28,7 +30,7 @@
 
       </tr>
     <tbody>
-    <h2>Posts search for "<%= @word %>"</h2>
+    <h2>投稿を "<%= @word %>" で検索した結果</h2>
     <% @posts.each do |post| %>
       <tr>
         <td>
