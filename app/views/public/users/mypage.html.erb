@@ -1,49 +1,67 @@
 <div class="container">
-  <h1>MyPage</h1>
+  <div class ="row d-flex justify-content-center">
+    <div class="title1">
+      <div class="title2">
+        <h1>MyPage</h1>
+      </div>
+    </div>
+  </div>
   <div class="row mt-3">
-    <div class="col-md-3">
-      <div>
-        <%= link_to user_followings_path(@user) do %>
-          <i class="fa-solid fa-address-book" style="color: #fdcedc;"></i>
-          <%= @user.followings.count %>
+    <div class="card col-md-3 pt-3 pb-3">
+      <div class="row d-flex justify-content-center">
+        <div class="col-3">
+          <%= link_to user_followings_path(@user) do %>
+            <i class="fa-solid fa-address-book" style="color: #fdcedc;"></i>
+            <%= @user.followings.count %>
         <% end %>
+        </div>
+        <div class="col-3">
+          <%= link_to user_followers_path(@user) do %>
+          <i class="fa-solid fa-address-book" style="color: #cefafd;"></i>
+          <%= @user.followers.count %>
+          <% end %>
+        </div>
+        <div class="col-3">
+          <%= link_to bookmark_posts_users_path do %>
+            <i class="fa-solid fa-bookmark" style="color: #f89b4f;"></i>
+          <% end %>
+        </div>
       </div>
-      <div>
-        <%= link_to user_followers_path(@user) do %>
-        <i class="fa-solid fa-address-book" style="color: #cefafd;"></i>
-        <%= @user.followers.count %>
-        <% end %>
+      <div class="col text-center pt-3 pb-3">
+        <%= image_tag current_user.get_profile_image(200,200), class: "img-fluid" %>
       </div>
-      <div>
-        <%= link_to bookmark_posts_users_path do %>
-          <i class="fas fa-star" style="color: #ffedab;"></i>
-        <% end %>
-      </div>
-      <%= image_tag current_user.get_profile_image(200,200), class: "img-fluid" %>
-      <div>
+      <div class="col text-center pb-3">
         <h5>ユーザー名</h5>
         <%= current_user.name %>
       </div>
-      <div>
+      <div class="col text-center pb-3">
         <h5>自己紹介</h5>
         <%= current_user.introduction %>
       </div>
       <% if @user.email != "guest@example.com" %>
-        <div>
-          <%= link_to "プロフィール編集", edit_user_path(current_user) %>
-        </div>
-        <div>
-          <%= link_to "退会", withdraw_users_path, method: :patch, data: {confirm: "本当に退会しますか？"} %>
+        <div class="row d-flex justify-content-center">
+          <div class="col-4">
+            <%= link_to edit_user_path(current_user) do %>
+              <i class="fa-solid fa-user-pen"></i>編集
+            <% end %>
+          </div>
+          <div class="col-4">
+            <%= link_to  withdraw_users_path, method: :patch, data: {confirm: "本当に退会しますか？"} do %>
+              <i class="fa-solid fa-user-slash"></i>退会
+            <% end %>
+          </div>
         </div>
       <% end %>
     </div>
-    <div class="col-md-9">
-      <h2>My Posts</h2>
-      <div class="row">
+    <div class=" col-md-9">
+      <div class ="row d-flex justify-content-center">
+        <h2>My Posts</h2>
+      </div>
+      <div class="row d-flex">
         <% current_user.posts.each do |post| %>
           <div class="col-md-4 mb-3">
             <div class="card">
-              <div class="card-image">
+              <div class="card-image text-center pt-3">
                 <% if post.medias.attached? %>
                   <% post.medias.each do |media| %>
                     <% if media.content_type.include?('image') %>
@@ -53,10 +71,10 @@
                     <% end %>
                   <% end %>
                 <% else %>
-                  <%= image_tag 'no_image.jpg', size: "200x200" %>
+                  <%= image_tag 'no_image1.png', size: "200x200" %>
                 <% end %>
               </div>
-              <div class="card-body">
+              <div class="card-body text-center">
                 <%= link_to post.post_content.truncate(20), post_path(post) %>
               </div>
             </div>

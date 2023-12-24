@@ -1,10 +1,23 @@
 <div class="container">
-  <h1>Tag Lists</h1>
-  <ul>
-    <% @tags.each do |tag| %>
-      <li>
-        <%= link_to "#{tag.name} (#{tag.posts.count})", admin_tag_path(tag) %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="row">
+    <div class="col">
+      <div class="row d-flex justify-content-center">
+        <h1>タグ一覧</h1>
+      </div>
+      <div class="col">
+        <span class="d-flex flex-row flex-wrap">
+          <% @tags.each do |tag| %>
+            <div class="neko-wrap-b col-4">
+              <div class="neko-box">
+                ・x・
+                <div class="text-center ">
+                  <%= link_to "#{tag.name} (#{tag.posts.count})", admin_tag_path(tag) %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
