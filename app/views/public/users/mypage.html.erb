@@ -7,52 +7,54 @@
     </div>
   </div>
   <div class="row mt-3 pt-5">
-    <aside id="sub" style="position: sticky">
-      <div class="card pt-3 pb-3">
-        <div class="row d-flex justify-content-center pt-3">
-          <div class="col-3">
-            <%= link_to user_followings_path(@user) do %>
-              <i class="fa-solid fa-address-book" style="color: #fdcedc;"></i>
-              <%= @user.followings.count %>
+    <aside id="sub">
+      <div class="box">
+        <div class="card pt-3 pb-3">
+          <div class="row d-flex justify-content-center pt-3">
+            <div class="col-3">
+              <%= link_to user_followings_path(@user) do %>
+                <i class="fa-solid fa-address-book" style="color: #fdcedc;"></i>
+                <%= @user.followings.count %>
+            <% end %>
+            </div>
+            <div class="col-3">
+              <%= link_to user_followers_path(@user) do %>
+              <i class="fa-solid fa-address-book" style="color: #cefafd;"></i>
+              <%= @user.followers.count %>
+              <% end %>
+            </div>
+            <div class="col-3">
+              <%= link_to bookmark_posts_users_path do %>
+                <i class="fa-solid fa-bookmark" style="color: #f89b4f;"></i>
+              <% end %>
+            </div>
+          </div>
+          <div class="col text-center pt-3 pb-3">
+            <%= image_tag current_user.get_profile_image(200,200), class: "img-fluid" %>
+          </div>
+          <div class="col text-center pt-3 pb-3">
+            <h5>ユーザー名</h5>
+            <%= current_user.name %>
+          </div>
+          <div class="col text-center pb-3">
+            <h5>自己紹介</h5>
+            <%= current_user.introduction %>
+          </div>
+          <% if @user.email != "guest@example.com" %>
+            <div class="row d-flex justify-content-center pb-3">
+              <div class="col-4">
+                <%= link_to edit_user_path(current_user) do %>
+                  <i class="fa-solid fa-user-pen"></i>編集
+                <% end %>
+              </div>
+              <div class="col-4">
+                <%= link_to  withdraw_users_path, method: :patch, data: {confirm: "本当に退会しますか？"} do %>
+                  <i class="fa-solid fa-user-slash"></i>退会
+                <% end %>
+              </div>
+            </div>
           <% end %>
-          </div>
-          <div class="col-3">
-            <%= link_to user_followers_path(@user) do %>
-            <i class="fa-solid fa-address-book" style="color: #cefafd;"></i>
-            <%= @user.followers.count %>
-            <% end %>
-          </div>
-          <div class="col-3">
-            <%= link_to bookmark_posts_users_path do %>
-              <i class="fa-solid fa-bookmark" style="color: #f89b4f;"></i>
-            <% end %>
-          </div>
         </div>
-        <div class="col text-center pt-3 pb-3">
-          <%= image_tag current_user.get_profile_image(200,200), class: "img-fluid" %>
-        </div>
-        <div class="col text-center pt-3 pb-3">
-          <h5>ユーザー名</h5>
-          <%= current_user.name %>
-        </div>
-        <div class="col text-center pb-3">
-          <h5>自己紹介</h5>
-          <%= current_user.introduction %>
-        </div>
-        <% if @user.email != "guest@example.com" %>
-          <div class="row d-flex justify-content-center pb-3">
-            <div class="col-4">
-              <%= link_to edit_user_path(current_user) do %>
-                <i class="fa-solid fa-user-pen"></i>編集
-              <% end %>
-            </div>
-            <div class="col-4">
-              <%= link_to  withdraw_users_path, method: :patch, data: {confirm: "本当に退会しますか？"} do %>
-                <i class="fa-solid fa-user-slash"></i>退会
-              <% end %>
-            </div>
-          </div>
-        <% end %>
       </div>
     </aside>
 
