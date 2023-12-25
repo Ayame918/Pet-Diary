@@ -21,21 +21,22 @@
   </head>
 
   <body class="d-flex flex-column h-100">
-    <div>
       <header class="wrapper">
         <%= render 'layouts/header' %>
       </header>
       <main class="flex-shrink-0">
-        <div class="search_form pt-3 pb-3">
-          <%= render 'public/posts/search' %>
-        </div>
-        <div class="pb-5 ">
+        <div class="pb-5">
+          <div class="search_form pt-3 pb-3">
+            <%= render 'public/posts/search' %>
+          </div>
+          <% flash.each do |message_type, message| %>
+            <div class="flash-message <%= message_type %>"><%= message %></div>
+          <% end %>
           <%= yield %>
         </div>
       </main>
-      <footer class="under" style="background-color: #6c2735 ">
+      <footer class="footer  mt-auto py-3" style="background-color: #6c2735 ">
         <%= render 'layouts/footer' %>
       </footer>
-    </div>
   </body>
 </html>

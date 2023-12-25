@@ -57,31 +57,49 @@
               <% elsif admin_signed_in? %>
                 <% if user_signed_in? && current_user.present? %>
                 <% end %>
-                  <li class="nav-item">
-                    <%= link_to "ユーザー一覧", admin_users_path, class: "btn font-bold "%>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to "投稿履歴一覧", admin_posts_path, class: "btn font-bold "%>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to "タグ一覧", admin_tags_path, class: "btn font-bold "%>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn font-bold "%>
-                  </li>
+                <div class="title3">
+                  <div class="title4">
+                    <li class="nav-item">
+                      <%= link_to "ユーザー一覧", admin_users_path, class: "btn font-bold "%>
+                    </li>
+                  </div>
+                </div>
+                <div class="title3 ml-1">
+                  <div class="title4">
+                    <li class="nav-item">
+                      <%= link_to "投稿履歴一覧", admin_posts_path, class: "btn font-bold "%>
+                    </li>
+                  </div>
+                </div>
+                <div class="title3 ml-1">
+                  <div class="title4"> 
+                    <li class="nav-item">
+                      <%= link_to "タグ一覧", admin_tags_path, class: "btn font-bold "%>
+                    </li>
+                  </div>
+                </div>
+                <div class="title3 ml-1">
+                  <div class="title4">
+                    <li class="nav-item">
+                      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn font-bold "%>
+                    </li>
+                  </div>
+                </div>
               <% else %>
-                  <li class="nav-item">
-                    <%= link_to "管理者", new_admin_session_path, class: "btn font-bold"%>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to "ゲストログイン", user_guest_sign_in_path, method: :post, class: "btn font-bold sign_in" %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to "新規登録", new_user_registration_path, class: "btn font-bold"%>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to "ログイン", new_user_session_path, class: "btn font-bold"%>
-                  </li>
+                <div class="title5 ml-1">
+                  <div class="title6">
+                    <li class="nav-item">
+                      <%= link_to "新規登録", new_user_registration_path, class: "btn font-bold"%>
+                    </li>
+                  </div>
+                </div>
+                <div class="title5 ml-1">
+                  <div class="title6">
+                    <li class="nav-item">
+                      <%= link_to "ログイン", new_user_session_path, class: "btn font-bold"%>
+                    </li>
+                  </div>
+                </div>
               <% end %>
             </ul>
           </nav>

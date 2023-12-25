@@ -7,7 +7,7 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+     @user = current_user
     redirect_to my_page_users_path if @user == current_user
   end
 
@@ -19,25 +19,27 @@ class Public::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     if @user !=current_user
+      flash[:notice] = "編集する権限がありません"
       redirect_to user_path(current_user.id)
-    else
-     flash[:notice] = "編集する権限がありません"
     end
   end
 
   def create
     if @user.save
-      flash[:notice] = "You have created a user successfully."
+      flash[:notice] = '変更が保存されました。'
       redirect_to user_path(@user)
     else
+      flash.now[:alert] = "変更に失敗しました。"
       render :edit
     end
   end
 
   def update
     if current_user.update(user_params)
-      redirect_to my_page_users_path, notice: '変更が保存されました。'
+      flash[:notice] = '変更が保存されました。'
+      redirect_to my_page_users_path
     else
+      flash.now[:alert] = "変更に失敗しました。"
       render 'edit'
     end
   end
@@ -53,16 +55,17 @@ class Public::UsersController < ApplicationController
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.email == "guest@example.com"
-      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      flash[:notice] =　"ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      redirect_to user_path(current_user)
     end
   end 
-
-  def user_params
-    params.require(:user).permit(:name,:profile_image, :introduction)
-  end
   
   def liked_posts
     @bookmark_posts = Post.bookmark_posts(current_user, params[:page], 12)
   end
 
+  def user_params
+    params.require(:user).permit(:name,:profile_image, :introduction)
+  end
+  
 end

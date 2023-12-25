@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true, uniqueness: true, length: { minimum: 1, maximum: 20 }
-  validates :introduction, length: { maximum: 50 }
+  validates :introduction, length: { maximum: 100 }
 
 
   # フォローしている関連付け
@@ -26,7 +26,7 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   # 投稿に対するブックマーク
   has_many :post_bookmarks, dependent: :destroy
-  
+
 
   # 指定したユーザーをフォローする
   def follow(user)
@@ -60,20 +60,20 @@ class User < ApplicationRecord
   def inactive_message
     is_active? ? super : :locked
   end
-  
+
   GUEST_USER_EMAIL = "guest@example.com"
-  
+
   def self.guest #find_or_create_byは、データの検索・作成を自動的に判断して処理を行うRailsのメソッド
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
       user.password = SecureRandom.urlsafe_base64 #ランダムな文字列を生成するRubyのメソッドの一種
       user.name = "ゲスト"
     end
   end
-  
+
   def guest_user? #メールアドレスがゲストユーザーのものであるかを判定しtrueかfalseの値を返す
     email == GUEST_USER_EMAIL
   end
-  
+
   def self.looks(search, word)
     if search == "perfect_match"
       User.where("name LIKE?", "#{word}")
