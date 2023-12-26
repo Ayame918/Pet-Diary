@@ -65,7 +65,7 @@ class User < ApplicationRecord
 
   def self.guest #find_or_create_byは、データの検索・作成を自動的に判断して処理を行うRailsのメソッド
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
-      user.password = SecureRandom.urlsafe_base64('utf-8') #ランダムな文字列を生成するRubyのメソッドの一種
+      user.password = SecureRandom.urlsafe_base64.encode('utf-8') #ランダムな文字列を生成するRubyのメソッドの一種
       user.name = "ゲスト"
     end
   end
