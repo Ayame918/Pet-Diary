@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <div class="col-12">
-      <div>
-        <h2 class="text-center", style="color: #48120E">
-          <i class="fa-regular fa-address-book" style="color: #e6c0c0;"></i>
-            ユーザー一覧
-          <i class="fa-regular fa-address-book" style="color: #e6c0c0;"></i>
-        </h2>
+      <div class="col-6 text-center">
+        <div class="titleH" >
+          <h2>
+              ユーザー一覧
+          </h2>
+        </div>
       </div>
       <div class="pt-5">
         <table class="table", style="color: #4d382e;">
@@ -21,7 +21,11 @@
           <% @users.each do |user| %>
             <tr>
               <td><%= user.id %></td>
-              <td><%= link_to user.name, admin_user_path(user) %></td>
+              <td>
+                <div class="marker-P-blue">
+                  <%= link_to user.name, admin_user_path(user) %>
+                </div>
+              </td>
               <td><%= user.email %></td>
               <td>
                 <% if user.is_active == true %>
@@ -35,6 +39,9 @@
         </table>
       </div>
     </div>
-    <div class="all__paginate">
+    <div class="row">
+      <div class="col  pt-5">
+        <%= paginate @users %>
+      </div>
     </div>
   </div>

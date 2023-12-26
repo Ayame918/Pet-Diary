@@ -253,7 +253,7 @@ body{
   border-radius: 6px;
   box-shadow: 0 0 0 5px #83ccd2 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
 }
-/*ユーザー編集*/
+/*ユーザー・投稿編集*/
 .titleG{
   background: #83ccd2;
   padding: 5px;
@@ -305,8 +305,26 @@ body{
   box-shadow: 0 0 0 5px #d8e698 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
 }
 
+/*タグ*/
+.titleK{
+  background: #a59aca;
+  padding: 5px;
+  border: 2px dashed rgba(255 , 255 , 255 , 0.5);
+  -moz-border-radius: 6px;
+  -moz-box-shadow: 0 0 0 5px #a59aca , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+  -webkit-border-radius: 6px;
+  -webkit-box-shadow: 0 0 0 5px #a59aca , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+  border-radius: 6px;
+  box-shadow: 0 0 0 5px #a59aca , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+}
+
+/*ログイン系*/
 .marker-P-green{
   background: linear-gradient(transparent 60%, #ccffcc 0%);
+}
+/*admin側ユーザ一覧*/
+.marker-P-blue{
+  background: linear-gradient(transparent 60%, #ccffff 0%);
 }
 
 /*マイページの投稿表示*/

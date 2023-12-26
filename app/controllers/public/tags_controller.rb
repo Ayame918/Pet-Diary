@@ -1,6 +1,6 @@
 class Public::TagsController < ApplicationController
   def index
-    @tags = Tag.all
+    @tags = Tag.page(params[:page]).per(15)
   end
 
   def show

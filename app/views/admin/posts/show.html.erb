@@ -1,29 +1,43 @@
 <div class="container">
-  <% if @post.medias.attached? %>
-    <% @post.medias.each do |media| %>
-      <% if media.content_type.include?('image') %>
-        <%= image_tag media, class: "img-fluid", size: "200x200" %>
-      <% else %>
-        <%= video_tag rails_blob_path(media), controls: true, class: "img-fluid", size: "200x200" %>
-      <% end %>
-    <% end %>
-  <% else %>
-    <%= image_tag 'no_image1.png' %>
-  <% end %>
-
-  <h2>本文</h2>
-  <p><%= @post.post_content %></p>
-
-  <h2>タグ</h2>
-  <ul>
-    <% @post.tags.each do |tag| %>
-      <li>
-        <%= link_to tag.name, tag_path(tag) %>
-      </li>
-    <% end %>
-  </ul>
-  <div>
-    <i class="fa-regular fa-comment-dots" style="color: #765047;"></i> <%= @post.post_comments.count %>
+  <div class ="row d-flex justify-content-center">
+    <div class="col-5 text-center">
+      <div class="titleD">
+        <h1>投稿</h1>
+      </div>
+    </div>
   </div>
-  
-  <%= link_to "削除", admin_post_path(@post.id), method: :delete, "data-confirm" => "投稿を削除しますか？" %> 
+  <div class="row justify-content-center pt-5">
+    <% if @post.medias.attached? %>
+      <% @post.medias.each do |media| %>
+        <% if media.content_type.include?('image') %>
+          <%= image_tag media, class: "img-fluid", size: "300x300" %>
+        <% else %>
+          <%= video_tag rails_blob_path(media), controls: true, class: "img-fluid", size: "300x300" %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= image_tag 'no_image.jpg', size: "200x200" %>
+    <% end %>
+    <div class="row flex-column text-center p-5">
+      <div class=" text-center pt-3 pb-3">
+        <%= @post.post_content %>
+      </div>
+      <div class=" text-center pt-3 pb-5">
+        <h4>タグ</h4>
+        <% @post.tags.each do |tag| %>
+          <li>
+            <%= link_to tag.name, tag_path(tag) %>
+          </li>
+        <% end %>
+      </div>
+      <div class=" text-center pt-3 pb-3">
+        <%= link_to edit_post_path(@post.id) do %>
+          <i class="fa-solid fa-user-pen"></i>編集
+        <% end %>
+        <%= link_to post_path(@post.id), method: :delete, "data-confirm" => "投稿を削除しますか？" do %>
+          <i class="fa-solid fa-trash-can"></i>削除
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -29,9 +29,6 @@
           <div class="search_form pt-3 pb-3">
             <%= render 'public/posts/search' %>
           </div>
-          <% flash.each do |message_type, message| %>
-            <div class="flash-message <%= message_type %>"><%= message %></div>
-          <% end %>
           <%= yield %>
         </div>
       </main>

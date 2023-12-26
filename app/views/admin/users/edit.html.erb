@@ -1,73 +1,64 @@
 <div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div style=" color: white; background: #cbe6be; padding: 10px; border: 2px dashed rgba(255 , 255 , 255 , 0.5);
-                      -moz-border-radius: 6px; -moz-box-shadow: 0 0 0 5px #cbe6be , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
-                      -webkit-border-radius: 6px; -webkit-box-shadow: 0 0 0 5px #cbe6be , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
-                      border-radius: 6px; box-shadow: 0 0 0 5px #cbe6be , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5); ">
-        <h2 class="text-center", style="color: #48120E">
-          <i class="fa-solid fa-clover" style="color: #54917f;"></i>
-            <%= @user.name %>さんのユーザー情報編集
-          <i class="fa-solid fa-clover" style="color: #54917f;"></i>
-        </h2>
+  <div class="row justify-content-center">
+    <div class="col-12 text-center pt-5">
+      <div class="titleG">
+        <h1><%= @user.name %>さんのユーザー情報編集</h1>
       </div>
     </div>
   </div>
-  <div class="row pt-5">
-    <%= form_with model: [:admin, @user], url: admin_user_path(@user.id), method: :patch do |f| %>
-      <div class="row pb-3" >
-        <div class="col-4 pr-5 mr-5">
+  <%= form_with model: [:admin, @user], url: admin_user_path(@user.id), method: :patch do |f| %>
+    <div class="row justify-content-center">
+      <div class="col-3 form-group mt-5 text-center">
+        <p>
           ユーザーID
-        </div>
-        <div class="col-6 pl-5 ml-5">
-          <%= @user.id %>
-        </div>
+        </p>
       </div>
-     <div class="row pb-3" >
-      <div class="col-4 pr-5 mr-5">
-        ユーザー名
+      <div class="col-5 form-group mt-5 ">
+        <%= @user.id %>
       </div>
-      <div class="col-6 pl-5 ml-5">
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3 form-group mt-5 text-center">
+        <p>
+          ユーザー名
+        </p>
+      </div>
+      <div class="col-5 form-group mt-5 ">
         <%= f.text_field :name %>
       </div>
-      </div>
-      <div class="row pb-3" >
-        <div class="col-4 pr-5 mr-5">
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3 form-group mt-5 text-center">
+        <p>
           メールアドレス
-        </div>
-        <div class="col-6 pl-5 ml-5">
+        </p>
+      </div>
+      <div class="col-5 form-group mt-5 ">
           <%= f.text_field :email %>
-        </div>
       </div>
-      <div class="row pb-3" >
-        <div class="col-4 pr-5 mr-5">
-          自己紹介
-        </div>
-        <div class="col-6 pl-5 ml-5">
-          <%= f.text_field :introduction %>
-        </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3 form-group mt-5 ">
+        <p>
+          ユーザーステータス
+        </p>
       </div>
-      <div class="row pb-3" >
-        <div class="col-4 pr-5 mr-5">
-          会員ステータス
-        </div>
-        <div class="col-6 pl-5 ml-5">
-          <%= f.radio_button :is_active, false %>
-              <%= f.label :is_active, "退会" %>
+      <div class="col-5 form-group mt-5 ">
+        <%= f.radio_button :is_active, false %>
+        <%= f.label :is_active, "退会" %>
 
-              <%= f.radio_button :is_active, true %>
-              <%= f.label :is_active, "有効" %>
+        <%= f.radio_button :is_active, true %>
+        <%= f.label :is_active, "有効" %>
+      </div>
+    </div>
+    <div class="form-row justify-content-center">
+      <div class="col-5 form-group mt-5">
+        <div class="title7">
+          <div class="title8">
+            <%= f.submit "変更", class: "btn form-control" %>
+          </div>
         </div>
       </div>
-        <div class="row justify-content-md-center">
-           <div class = "col-md-4">
-              <div style="border: 2px solid #bee6d8; padding: 2px; border-radius: 5px; text-align: center;">
-                <div style="background-color: #bee6d8; border-radius: 5px;">
-                  <%= f.submit "変更を保存", class:"btn btn-lg" %>
-                </div>
-              </div>
-            </div>
-        </div>
-      <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
