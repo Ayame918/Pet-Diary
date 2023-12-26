@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="row">
+    <div class="fixed-top p-2" style="background-color: #6c2735;">
+      <div class="d-flex content-between align-items-center md-4 ">
+        <div class="btn-group">
+          <%= link_to root_path, class: "btn font-bold", class: "header-logo" do %>
+            <%= image_tag '001.png', size: '100x70' %>
+          <% end %>
+        </div>
+        <div class="btn-group pl-5">
+          <%# flash.each do |message_type, message| %>
+            <div class="flash-message <%#= message_type %>"><%#= message %></div>
+          <%# end %>
+        </div>
+        <div class="btn-group ml-auto">
+          <nav class="d-flex align-items-center">
+            <ul class="navbar-nav list-group-horizontal ">
+              <% if user_signed_in? %>
+                  <div class="title1 mr-1">
+                    <div class="title2">
+                      <li class="nav-item">
+                        <%= link_to "マイページ", my_page_users_path, class: "btn font-bold "%>
+                      </li>
+                    </div>
+                  </div>
+                  <div class="title1 mr-1">
+                    <div class="title2">
+                      <li class="nav-item">
+                          <%= link_to "新規投稿", new_post_path, class: "btn font-bold "%>
+                      </li>
+                    </div>
+                  </div>
+                  <div class="title1 mr-1">
+                    <div class="title2">
+                      <li class="nav-item">
+                        <%= link_to "ユーザー一覧", users_path(id: current_user.id), class: "btn font-bold "%>
+                      </li>
+                    </div>
+                  </div>
+                  <div class="title1 mr-1">
+                    <div class="title2">
+                      <li class="nav-item">
+                          <%= link_to "投稿一覧", posts_path, class: "btn font-bold "%>
+                      </li>
+                    </div>
+                  </div>
+                  <div class="title1 mr-1">
+                    <div class="title2">
+                      <li class="nav-item">
+                        <%= link_to "タグ", tags_path, class: "btn font-bold "%>
+                      </li>
+                    </div>
+                  </div>
+                  <div class="title1 mr-1">
+                    <div class="title2">
+                      <li class="nav-item">
+                        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn font-bold "%>
+                      </li>
+                    </div>
+                  </div>
+
+              <% elsif admin_signed_in? %>
+                <% if user_signed_in? && current_user.present? %>
+                <% end %>
+                <div class="title3">
+                  <div class="title4">
+                    <li class="nav-item">
+                      <%= link_to "ユーザー一覧", admin_users_path, class: "btn font-bold "%>
+                    </li>
+                  </div>
+                </div>
+                <div class="title3 ml-1">
+                  <div class="title4">
+                    <li class="nav-item">
+                      <%= link_to "投稿履歴一覧", admin_posts_path, class: "btn font-bold "%>
+                    </li>
+                  </div>
+                </div>
+                <div class="title3 ml-1">
+                  <div class="title4"> 
+                    <li class="nav-item">
+                      <%= link_to "タグ一覧", admin_tags_path, class: "btn font-bold "%>
+                    </li>
+                  </div>
+                </div>
+                <div class="title3 ml-1">
+                  <div class="title4">
+                    <li class="nav-item">
+                      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn font-bold "%>
+                    </li>
+                  </div>
+                </div>
+              <% else %>
+                <div class="title5 ml-1">
+                  <div class="title6">
+                    <li class="nav-item">
+                      <%= link_to "新規登録", new_user_registration_path, class: "btn font-bold"%>
+                    </li>
+                  </div>
+                </div>
+                <div class="title5 ml-1">
+                  <div class="title6">
+                    <li class="nav-item">
+                      <%= link_to "ログイン", new_user_session_path, class: "btn font-bold"%>
+                    </li>
+                  </div>
+                </div>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

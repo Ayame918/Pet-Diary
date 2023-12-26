@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6 text-center pt-3">
+      <div class="titleE">
+        <h1>投稿一覧</h1>
+      </div>
+    </div>
+  </div>
+  <div class="box1">
+    <div class="row p-5">
+      <% @posts.each do |post| %>
+        <div class="col-md-3">
+          <div class="card ">
+            <div class="card-image text-center pt-3">
+              <% if post.medias.attached? %>
+                    <% post.medias.each do |media| %>
+                      <% if media.content_type.include?('image') %>
+                        <%= link_to post_path(post) do %>
+                          <%= image_tag media, class: "img-fluid", size: "200x200" %>
+                        <% end %>
+                      <% else %>
+                        <%= video_tag rails_blob_path(media), controls: true, class: "img-fluid", size: "200x200" %>
+                      <% end %>
+                    <% end %>
+                  <% else %>
+                    <%= image_tag 'no_image1.png', size: "200x200" %>
+                  <% end %>
+            </div>
+            <div class="card-body text-center">
+              <span>
+                  <%=link_to post.post_content.truncate(20), post_path(post.id) %>
+              </span>
+              <div class="col">
+                <%= render "public/favorites/btn", post: post %>
+                  <i class="fa-regular fa-comment-dots" style="color: #765047;"></i> <%= post.post_comments.count %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col d-flex align-items-center justify-content-center">
+      <%= paginate @posts %>
+    </div>
+  </div>
+</div>

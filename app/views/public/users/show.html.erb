@@ -1,2 +1,91 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container">
+  <div class ="row d-flex justify-content-center">
+    <div class="col-5 text-center">
+      <div class="titleD">
+        <h1><%= @user.name %>さんのページ</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3 pt-5">
+    <aside id="sub">
+      <div class="box">
+        <div class="card pt-3 pb-3">
+          <div class="row d-flex justify-content-center pt-3">
+            <div class="col-3">
+              <%= link_to user_followings_path(@user) do %>
+                <i class="fa-solid fa-address-book" style="color: #fdcedc;"></i>
+                <%= @user.followings.count %>
+            <% end %>
+            </div>
+            <div class="col-3">
+              <%= link_to user_followers_path(@user) do %>
+              <i class="fa-solid fa-address-book" style="color: #cefafd;"></i>
+              <%= @user.followers.count %>
+              <% end %>
+            </div>
+            <div class="col-3">
+              <%= link_to bookmark_posts_users_path(@user) do %>
+                <i class="fa-solid fa-bookmark" style="color: #f89b4f;"></i>
+              <% end %>
+            </div>
+          </div>
+          <div class="col text-center pt-4 pb-3">
+            <% if current_user != @user %>
+              <%= render "public/relationships/btn", user: @user, options: { class: ""} %>
+            <% else %>
+              <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+                <i class="fas fa-user-cog"></i>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="col text-center pt-3 pb-3">
+             <%= image_tag @user.get_profile_image(200,200), class: "img-fluid" %>
+          </div>
+          <div class="col text-center pt-3 pb-3">
+            <h5>ユーザー名</h5>
+            <%= @user.name %>
+          </div>
+          <div class="col text-center pb-3">
+            <h5>自己紹介</h5>
+            <%= @user.introduction %>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <div class=" col-md-9">
+      <div class="box1">
+        <div class ="row d-flex justify-content-center">
+          <div class="box2">
+            <h2><%= @user.name %>さんの投稿</h2>
+          </div>
+        </div>
+        <div class="row d-flex pt-3 pl-1">
+          <% @user.posts.each do |post| %>
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-image text-center pt-3">
+                  <% if post.medias.attached? %>
+                    <% post.medias.each do |media| %>
+                      <% if media.content_type.include?('image') %>
+                        <%= link_to post_path(post) do %>
+                          <%= image_tag media, class: "img-fluid", size: "200x200" %>
+                        <% end %>
+                      <% else %>
+                        <%= video_tag rails_blob_path(media), controls: true, class: "img-fluid", size: "200x200" %>
+                      <% end %>
+                    <% end %>
+                  <% else %>
+                    <%= image_tag 'no_image1.png', size: "200x200" %>
+                  <% end %>
+                </div>
+                <div class="card-body text-center">
+                  <%= link_to post.post_content.truncate(20), post_path(post) %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

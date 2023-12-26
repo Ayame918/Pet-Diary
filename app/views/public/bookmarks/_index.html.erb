@@ -1,0 +1,11 @@
+ <% bookmarks.each do |bookmark| %>
+    <tr>
+      <td><%= bookmark.post.user.name %></td>
+      <td>
+        <%= link_to post_path(bookmark.post) do %>
+          <%= bookmark.post.title %>
+        <% end %>
+      </td>
+      <td><%= bookmark.post.body %></td>
+    </tr>
+  <% end %>

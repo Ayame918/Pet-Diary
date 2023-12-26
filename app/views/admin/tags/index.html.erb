@@ -1,2 +1,30 @@
-<h1>Admin::Tags#index</h1>
-<p>Find me in app/views/admin/tags/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="row d-flex justify-content-center">
+        <div class="titleK">
+          <h1>タグ一覧</h1>
+        </div>
+      </div>
+      <div class="col">
+        <span class="d-flex flex-row flex-wrap">
+          <% @tags.each do |tag| %>
+            <div class="neko-wrap-b col-4">
+              <div class="neko-box">
+                ・x・
+                <div class="text-center ">
+                  <%= link_to "#{tag.name} (#{tag.posts.count})", admin_tag_path(tag) %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col pt-5">
+      <%= paginate @tags %>
+    </div>
+  </div>
+</div>

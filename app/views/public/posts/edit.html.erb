@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-5 text-center pt-5">
+      <div class="titleG">
+        <h1>投稿編集</h1>
+      </div>
+    </div>
+  </div>
+  <%= form_with model: @post do |f| %>
+    <div class="row justify-content-center">
+      <div class="col-3 form-group mt-5 text-center">
+        <%= f.label :profile_image, "プロフィール画像" %>
+      </div>
+      <div class="col-5 form-group mt-5 ">
+        <%= f.file_field :medias, accept: ["image/*", "video/*"], multiple: true %>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3 form-group mt-5 text-center">
+        <p>本文</p>
+      </div>
+      <div class="col-5 form-group mt-5 ">
+        <%= f.text_area :post_content %>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3 form-group mt-5 text-center">
+        <p>タグ</p>
+      </div>
+      <div class="col-5 form-group mt-5 ">
+        <%= f.text_field :tags, value: @post.tags.pluck(:name) %>
+      </div>
+    </div>
+    <div class="form-row justify-content-center">
+      <div class="col-3 form-group mt-5">
+        <div class="title7">
+          <div class="title8">
+            <%= f.submit '投稿', class: "btn form-control" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

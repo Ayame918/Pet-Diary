@@ -1,0 +1,7 @@
+<% if current_user != user %> <%#ログインしているユーザーと表示対象のユーザーが異なるかをチェック%>
+  <% if current_user.following?(user) %> <%#ログインしているユーザーが表示対象のユーザーを既にフォローしているかどうかをチェック%>
+    <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: options[:class].presence || "btn btn-info" %>
+  <% else %>
+    <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: options[:class].presence || "btn btn-success" %>
+  <% end %>
+<% end %>
