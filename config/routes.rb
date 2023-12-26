@@ -46,7 +46,7 @@ Rails.application.routes.draw do
       end
 
       post "user/guest_sign_in", to: "sessions#guest_sign_in"
-  end
+    end
 
 
     resource :sessions, only: [:new, :create, :destroy]
