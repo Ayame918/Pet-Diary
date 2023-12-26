@@ -48,8 +48,12 @@
           </div>
           <div class="col text-center pb-3">
             <% if current_user && current_user.id == @post.user_id %>
-              <%= link_to "編集", edit_post_path(@post.id) %>
-              <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "投稿を削除しますか？" %>
+              <%= link_to edit_post_path(@post.id) do %>
+                <i class="fa-solid fa-user-pen"></i>編集
+              <% end %>
+              <%= link_to post_path(@post.id), method: :delete, "data-confirm" => "投稿を削除しますか？" do %>
+                <i class="fa-solid fa-trash-can"></i>削除
+              <% end %>
             <% end %>
           </div>
         </div>
