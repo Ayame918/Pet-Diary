@@ -1,30 +1,44 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 mx-auto">
-      <h1>Profile Edit</h1>
-      <%= form_with model: @user, url: update_user_users_path, method: :patch do |f| %>
-        <div class="form-group">
-          <%= f.label :profile_image, "プロフィール画像" %>
-          <div>
-            <%= f.file_field :profile_image %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :name, "名前" %>
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :introduction, "自己紹介" %>
-          <%= f.text_area :introduction, class: "form-control" %>
-        </div>
-        <div class="row">
-          <div class="col-md-6 mx-auto">
-            <div class="form-group">
-              <%= f.submit "変更", class: "btn btn-secondary" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+  <div class="row justify-content-center">
+    <div class="col-5 text-center pt-5">
+      <div class="titleG">
+        <h1>ユーザー編集</h1>
+      </div>
     </div>
   </div>
+  <%= form_with model: @user, url: update_user_users_path, method: :patch do |f| %>
+    <div class="row justify-content-center">
+      <div class="col-3 form-group mt-5 text-center">
+        <%= f.label :profile_image, "プロフィール画像" %>
+      </div>
+      <div class="col-5 form-group mt-5 ">
+        <%= f.file_field :profile_image %>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3 form-group mt-5 text-center">
+        <%= f.label :name, "名前" %>
+      </div>
+      <div class="col-5 form-group mt-5 ">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3 form-group mt-5 text-center">
+        <%= f.label :introduction, "自己紹介" %>
+      </div>
+      <div class="col-5 form-group mt-5 ">
+          <%= f.text_area :introduction, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-row justify-content-center">
+      <div class="col-3 form-group mt-5">
+        <div class="title7">
+          <div class="title8">
+            <%= f.submit "変更", class: "btn form-control" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

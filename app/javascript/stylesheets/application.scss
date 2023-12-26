@@ -10,10 +10,10 @@ color: #4d2d22;
 }
 /*アクセスしたことのないリンク
 a:link {
-color:#e3fcca; 
+color:#e3fcca;
 }*/
 /*アクセスしたことのあるリンク
-a:visited { 
+a:visited {
 color:#fccafc;
 }*/
 /*マウスが上に乗っている状態*/
@@ -57,14 +57,34 @@ body{
 
 #sub .box{
   position: sticky;
-  top: 300px;
+  top: 100px;
   width: 100%;
   height: 300px;
-  background: #CCC;
+}
+
+/*投稿に関するコメントの追跡*/
+#subA {
+  box-sizing: border-box;
+  width: 370px;
+}
+
+#subA .boxA{
+  position: sticky;
+  top: 100px;
+  width: 100%;
+  height: 300px;
 }
 
 .btn-group .nav-item{
   color: #4d2d22;
+}
+
+/*検索ボタン*/
+.btnA{
+  border: 2px solid #b1f0fc;
+  background: #caf4fc;
+  border-radius: 10px;
+  
 }
 
 .main_visual_image1{
@@ -147,6 +167,20 @@ body{
   border-radius: 10px;
   font-size: 100%;
 }
+
+/*削除ボタン*/
+.title9{
+  border: 4px solid #ff8088;
+  padding: 2px;
+  border-radius: 10px
+}
+
+.title10{
+  background: #ff8088;
+  border-radius: 10px;
+  font-size: 100%;
+}
+
 /*ページ名の飾り*/
 /*新規登録*/
 .titleA{
@@ -184,7 +218,7 @@ body{
   border-radius: 6px;
   box-shadow: 0 0 0 5px #e6cde3 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
 }
-/*新規投稿*/
+/*マイページ*/
 .titleD{
   background: #e6cde3;
   padding: 5px;
@@ -196,11 +230,117 @@ body{
   border-radius: 6px;
   box-shadow: 0 0 0 5px #e6cde3 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
 }
+/*投稿一覧*/
+.titleE{
+  background: #83ccd2;
+  padding: 5px;
+  border: 2px dashed rgba(255 , 255 , 255 , 0.5);
+  -moz-border-radius: 6px;
+  -moz-box-shadow: 0 0 0 5px #83ccd2 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+  -webkit-border-radius: 6px;
+  -webkit-box-shadow: 0 0 0 5px #83ccd2 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+  border-radius: 6px;
+  box-shadow: 0 0 0 5px #83ccd2 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+}
+/*投稿詳細*/
+.titleF{
+  background: #83ccd2;
+  padding: 5px;
+  border: 2px dashed rgba(255 , 255 , 255 , 0.5);
+  -moz-border-radius: 6px;
+  -moz-box-shadow: 0 0 0 5px #83ccd2 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+  -webkit-border-radius: 6px;
+  -webkit-box-shadow: 0 0 0 5px #83ccd2 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+  border-radius: 6px;
+  box-shadow: 0 0 0 5px #83ccd2 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+}
+/*ユーザー編集*/
+.titleG{
+  background: #83ccd2;
+  padding: 5px;
+  border: 2px dashed rgba(255 , 255 , 255 , 0.5);
+  -moz-border-radius: 6px;
+  -moz-box-shadow: 0 0 0 5px #83ccd2 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+  -webkit-border-radius: 6px;
+  -webkit-box-shadow: 0 0 0 5px #83ccd2 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+  border-radius: 6px;
+  box-shadow: 0 0 0 5px #83ccd2 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+}
+
+/*ユーザー一覧*/
+.titleH{
+  background: #a0d8ef;
+  padding: 5px;
+  border: 2px dashed rgba(255 , 255 , 255 , 0.5);
+  -moz-border-radius: 6px;
+  -moz-box-shadow: 0 0 0 5px #a0d8ef , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+  -webkit-border-radius: 6px;
+  -webkit-box-shadow: 0 0 0 5px #a0d8ef , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+  border-radius: 6px;
+  box-shadow: 0 0 0 5px #a0d8ef , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+}
+
+/*お気に入り一覧*/
+.titleI{
+  background: #f0a448;
+  padding: 5px;
+  border: 2px dashed rgba(255 , 255 , 255 , 0.5);
+  -moz-border-radius: 6px;
+  -moz-box-shadow: 0 0 0 5px #f0a448 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+  -webkit-border-radius: 6px;
+  -webkit-box-shadow: 0 0 0 5px#f0a448 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+  border-radius: 6px;
+  box-shadow: 0 0 0 5px #f0a448 , 0 2px 3px 5px rgba(0 , 0 , 0 , 0.5);
+}
 
 .marker-P-green{
   background: linear-gradient(transparent 60%, #ccffcc 0%);
 }
 
+/*マイページの投稿表示*/
+.box1{
+  margin:2em 0;
+  position: relative;
+  padding: 0.5em 1.5em;
+  border-top: solid 2px #4d2d22;
+  border-bottom: solid 2px #4d2d22;
+}
+.box1:before, .box1:after{
+  content: '';
+  position: absolute;
+  top: -10px;
+  width: 2px;
+  height: -webkit-calc(100% + 20px);
+  height: calc(100% + 20px);
+  background-color: #4d2d22;
+}
+.box1:before {left: 10px;}
+.box1:after {right: 10px;}
+.box1 p {
+  margin: 0;
+  padding: 0;
+}
+/*マイページの投稿表示見出し*/
+.box2{
+	background: none;
+	border: 1px solid #caf4fc;	/* 線の太さ・種類・色 */
+	margin: 10px; /* 外側の余白 */
+	padding: 10px; /* 内側の余白 */
+	position: relative;
+}
+.box2:after{
+	background: none;
+	border: 1px solid #caf4fc;	/* 線の太さ・種類・色 */
+	content: '';
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+/*タグ関連*/
 /* ねこBOX */
 .neko-box {
  position: relative;
@@ -216,7 +356,7 @@ body{
  z-index: auto;
 }
 
-.neko-box::before, 
+.neko-box::before,
 .neko-box::after {
  height: 60px;
  width: 60px;

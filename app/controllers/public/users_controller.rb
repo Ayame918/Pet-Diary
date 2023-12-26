@@ -1,18 +1,17 @@
 class Public::UsersController < ApplicationController
 
-  before_action :authenticate_user!
-
   def mypage
     @user = current_user
   end
 
   def show
-     @user = current_user
+    @user = User.find(params[:id])
     redirect_to my_page_users_path if @user == current_user
   end
 
   def index
     @users = User.all
+    @users = User.page(params[:page]).per(12)
 
   end
 
