@@ -5,25 +5,25 @@
         <h1>ユーザー一覧</h1>
       </div>
     </div>
-    <div class="row">
-      <% @users.each do |user| %>
-        <div class="col-md-3 pt-5">
-          <div class="card ">
-            <div class="card-image text-center pt-3">
-              <%= image_tag user.get_profile_image(300,300), class: "img-fluid" %>
-            </div>
-            <div class="card-body">
-              <h5><%= link_to user.name, user_path(user) %></h5>
-              <%= user.introduction %>
-            </div>
+  </div>
+  <div class="row justify-content-center">
+    <% @users.each do |user| %>
+      <div class="col-md-3 pt-5">
+        <div class="card ">
+          <div class="card-image text-center pt-3">
+            <%= image_tag user.get_profile_image(300,300), class: "img-fluid" %>
+          </div>
+          <div class="card-body">
+            <h5><%= link_to user.name, user_path(user) %></h5>
+            <%= user.introduction %>
           </div>
         </div>
-      <% end %>
-    </div>
-    <div class="row">
-      <div class="col pt-5">
-        <%= paginate @users %>
       </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col pt-5">
+      <%= paginate @users %>
     </div>
   </div>
 </div>
